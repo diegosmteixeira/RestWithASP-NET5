@@ -1,0 +1,8 @@
+
+dotnet new sln -o RestWithASPNET
+
+cd .\RestWithASPNET\
+
+dotnet new webapi -o RestWithASPNET
+
+dotnet sln add .\RestWithASPNET\RestWithASPNET.csproj
