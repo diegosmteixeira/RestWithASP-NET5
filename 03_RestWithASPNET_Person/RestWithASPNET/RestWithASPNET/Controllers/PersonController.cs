@@ -1,26 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
 using RestWithASPNET.Services.Implementations;
 using RestWithASPNET.Models;
 
 namespace RestWithASPNET.Controllers
 {
+    [ApiVersion("1")]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class PersonController : ControllerBase
     {
-        private readonly ILogger<PersonController> _logger;
-        private IPersonService _personService;
+        private readonly IPersonService _personService;
 
-        public PersonController(ILogger<PersonController> logger, IPersonService personService)
+        public PersonController(IPersonService personService)
         {
-            _logger = logger;
             _personService = personService;
         }
 
