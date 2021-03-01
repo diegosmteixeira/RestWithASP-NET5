@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace RestWithASPNET.Models
+namespace RestWithASPNET.Model
 {
     [Table("person")]
     public class Person
@@ -20,7 +20,6 @@ namespace RestWithASPNET.Models
 
         [Column("address")]
         public string Address { get; set; }
-
         [Column("gender")]
         public string Gender { get; set; }
     }
