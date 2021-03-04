@@ -28,6 +28,10 @@ namespace RestWithASPNET.Repository.Implementations
         {
             return _context.People.SingleOrDefault(p => p.Id.Equals(id));
         }
+        public bool Exists(long id)
+        {
+            return _context.People.Any(p => p.Id.Equals(id));
+        }
 
         // Method responsible to crete one new person
         public Person Create(Person person)
@@ -85,10 +89,6 @@ namespace RestWithASPNET.Repository.Implementations
                     throw;
                 }
             }
-        }
-        public bool Exists(long id)
-        {
-            return _context.People.Any(p => p.Id.Equals(id));
         }
     }
 }

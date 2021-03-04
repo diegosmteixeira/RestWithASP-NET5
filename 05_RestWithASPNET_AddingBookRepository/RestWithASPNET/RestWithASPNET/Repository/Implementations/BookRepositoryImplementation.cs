@@ -14,7 +14,18 @@ namespace RestWithASPNET.Repository.Implementations
         {
             _context = context;
         }
-
+        public bool Exists(long id)
+        {
+            return _context.Books.Any(x => x.Id.Equals(id));
+        }
+        public List<Book> FindAll()
+        {
+            return _context.Books.ToList();
+        }
+        public Book FindByID(long id)
+        {
+            return _context.Books.SingleOrDefault(x => x.Equals(id));
+        }
         public Book Create(Book book)
         {
             try
@@ -28,7 +39,6 @@ namespace RestWithASPNET.Repository.Implementations
             }
             return book;
         }
-
         public void Delete(long id)
         {
             var searchAndDeploy = _context.Books.SingleOrDefault(x => x.Id.Equals(id));
@@ -45,22 +55,6 @@ namespace RestWithASPNET.Repository.Implementations
                 }
             }
         }
-
-        public bool Exists(long id)
-        {
-            return _context.Books.Any(x => x.Id.Equals(id));
-        }
-
-        public List<Book> FindAll()
-        {
-            return _context.Books.ToList();
-        }
-
-        public Book FindByID(long id)
-        {
-            return _context.Books.SingleOrDefault(x => x.Equals(id));
-        }
-
         public Book Update(Book book)
         {
             if (!Exists(book.Id)) return null;
